@@ -2,10 +2,21 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
+import { useEffect } from 'react'
+import axios from 'axios'
 function App() {
   const [count, setCount] = useState(0)
+  useEffect(() => {
 
+    axios.get(`${import.meta.env.VITE_API_URL}/users`)
+    .then(response => {
+      console.log(response.data,'12'); // 响应数据
+    })
+    .catch(error => {
+      console.error('Request error:', error);
+    });
+    // axios.get(`${import.meta.env.VITE_API_URL}/users`)
+  }, [])
   return (
     <>
       <div>
